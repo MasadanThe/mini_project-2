@@ -14,13 +14,19 @@ export default defineComponent({
 </script>
 
 <template>
+    <div>
+        <h2>Hourly forecast</h2>
+    </div>
     <div id="weather-info">
-   <div id="icon-temperature">
-    <img :src="weather.icon"/>
-    <p id="temperature">{{weather.temperature}}c</p>
-   </div>
-   <p id="description">{{weather.description}}</p>
-   <p>{{weather.additionalInformation}}</p>
+   <ul>
+    <li v-for="forecast in weather.forecast">
+        <div id="info">
+      <img :src="forecast.icon">
+      <p>{{ forecast.temperature }}c</p>
+      <p>{{ forecast.time }} </p>
+    </div>
+    </li>
+  </ul>
 </div>
 </template>
 
@@ -31,17 +37,17 @@ export default defineComponent({
   border-style: solid;
 }
 
-#icon-temperature{
+h2{
+    margin-left: 25%;
+}
+#info{
     display: flex;
 }
 
-#temperature{
-    font-size: 5em;
-    margin: auto;
+p{
+    margin:auto;
 }
-
-#description{
-    
-  margin-left: 40%;
- }
+li{
+    list-style-type: none;
+}
 </style>
